@@ -1,8 +1,44 @@
-import Image from "next/image";
+import { SignInButton, SignUpButton } from "@clerk/nextjs";
 import { auth } from "@clerk/nextjs/server";
+import {
+  ArrowRight,
+  Gauge,
+  Link2,
+  Lock,
+  ShieldCheck,
+  Sparkles,
+} from "lucide-react";
 import { redirect } from "next/navigation";
 
 import { Header } from "@/components/header";
+import { Button } from "@/components/ui/button";
+
+const features = [
+  {
+    icon: Link2,
+    title: "Shorten long URLs instantly",
+    description:
+      "Turn long, messy links into clean URLs that are easier to share anywhere.",
+  },
+  {
+    icon: Gauge,
+    title: "Manage everything in one dashboard",
+    description:
+      "Keep your short links organized so you can create, review, and update them from one place.",
+  },
+  {
+    icon: Lock,
+    title: "Access your workspace securely",
+    description:
+      "Sign in to a protected workspace and keep link management tied to your account.",
+  },
+];
+
+const steps = [
+  "Paste the URL you want to shorten.",
+  "Create a compact link in seconds.",
+  "Share it confidently from your dashboard.",
+];
 
 export default async function Home() {
   const { userId } = await auth();
@@ -12,68 +48,130 @@ export default async function Home() {
   }
 
   return (
-    <div className="flex flex-col flex-1 bg-zinc-50 font-sans dark:bg-black">
+    <div className="flex min-h-screen flex-col bg-background">
       <Header />
-      <main className="flex flex-1 w-full max-w-3xl mx-auto flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      <main className="flex-1">
+        <section className="mx-auto flex w-full max-w-6xl flex-col gap-16 px-6 py-16 sm:px-10 lg:px-12 lg:py-24">
+          <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+            <div className="space-y-8">
+              <div className="inline-flex items-center gap-2 rounded-full border border-border bg-muted/60 px-4 py-2 text-sm text-muted-foreground">
+                <Sparkles className="size-4 text-primary" />
+                Cleaner links for faster sharing
+              </div>
+              <div className="space-y-5">
+                <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+                  A simple link shortener for links people actually want to click.
+                </h1>
+                <p className="max-w-2xl text-lg leading-8 text-muted-foreground sm:text-xl">
+                  Create short, polished URLs, keep them organized in one
+                  account, and give every shared link a more professional look.
+                </p>
+              </div>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <SignUpButton mode="modal">
+                  <Button size="lg" className="w-full sm:w-auto">
+                    Start shortening links
+                    <ArrowRight className="size-4" />
+                  </Button>
+                </SignUpButton>
+                <SignInButton mode="modal">
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="w-full sm:w-auto"
+                  >
+                    Sign in to your workspace
+                  </Button>
+                </SignInButton>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-3">
+                <div className="rounded-2xl border border-border bg-card p-4">
+                  <p className="text-sm text-muted-foreground">Built for</p>
+                  <p className="mt-2 text-2xl font-semibold">Fast sharing</p>
+                </div>
+                <div className="rounded-2xl border border-border bg-card p-4">
+                  <p className="text-sm text-muted-foreground">Designed for</p>
+                  <p className="mt-2 text-2xl font-semibold">Clean branding</p>
+                </div>
+                <div className="rounded-2xl border border-border bg-card p-4">
+                  <p className="text-sm text-muted-foreground">Protected with</p>
+                  <p className="mt-2 text-2xl font-semibold">Secure access</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8">
+              <div className="rounded-2xl border border-border bg-background p-5">
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <p className="text-sm font-medium text-foreground">
+                      Share-ready links
+                    </p>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      A better way to organize the URLs you send every day.
+                    </p>
+                  </div>
+                  <ShieldCheck className="size-9 text-primary" />
+                </div>
+                <div className="mt-6 space-y-3">
+                  {steps.map((step, index) => (
+                    <div
+                      key={step}
+                      className="flex items-start gap-3 rounded-2xl bg-muted/60 p-4"
+                    >
+                      <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">
+                        {index + 1}
+                      </div>
+                      <p className="pt-1 text-sm text-foreground">{step}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <section
+            id="features"
+            className="grid gap-6 md:grid-cols-3"
+            aria-label="Application features"
           >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+            {features.map((feature) => {
+              const Icon = feature.icon;
+
+              return (
+                <article
+                  key={feature.title}
+                  className="rounded-3xl border border-border bg-card p-6 shadow-sm"
+                >
+                  <div className="flex size-11 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                    <Icon className="size-5" />
+                  </div>
+                  <h2 className="mt-5 text-xl font-semibold text-foreground">
+                    {feature.title}
+                  </h2>
+                  <p className="mt-3 text-base leading-7 text-muted-foreground">
+                    {feature.description}
+                  </p>
+                </article>
+              );
+            })}
+          </section>
+
+          <section className="rounded-3xl border border-border bg-muted/40 px-6 py-10 text-center sm:px-10">
+            <h2 className="text-3xl font-semibold tracking-tight text-foreground">
+              Ready to make every link easier to share?
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted-foreground">
+              Create an account, open your dashboard, and start turning long
+              URLs into short links that look better everywhere.
+            </p>
+            <div className="mt-6 flex justify-center">
+              <SignUpButton mode="modal">
+                <Button size="lg">Create your account</Button>
+              </SignUpButton>
+            </div>
+          </section>
+        </section>
       </main>
     </div>
   );
