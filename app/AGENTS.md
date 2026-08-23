@@ -4,17 +4,9 @@ These instructions apply to all routes and files under `app/`.
 
 Read and follow the shared project guidance before changing code:
 
-- [Coding standards]
-- [Next.js App Router]
-- [Authentication and data](../docs/authentication.md)
-- [UI components](../docs/ui-components.md)
-- [Validation workflow]
+- [Authentication and data]
+- [UI components]
 
-For detailed guidelines on specific topics, refer to the modular documentation in the `/docs` directory.
-
-## Mandatory Documentation Check
-
-Before generating or modifying any code, ALWAYS identify and read every relevant `.md` file in the `/docs` directory. Do not generate code until the relevant documentation has been reviewed and its rules are understood.
 
 ## Local Rules
 

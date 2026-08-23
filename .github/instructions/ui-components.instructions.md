@@ -1,3 +1,7 @@
+---
+description: Read this before creating or modifying UI components. This file describes the UI component rules for the project.
+---
+
 # UI Components
 
 ## Rules

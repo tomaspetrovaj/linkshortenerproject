@@ -1,3 +1,8 @@
+---
+description: Read this before implementing or modifying authentication. This file describes the authentication rules for the project.
+applyTo: **/*
+---
+
 # Authentication
 
 ## Rules
