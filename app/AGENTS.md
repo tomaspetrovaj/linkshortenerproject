@@ -7,7 +7,6 @@ Read and follow the shared project guidance before changing code:
 - [Authentication and data]
 - [UI components]
 
-
 ## Local Rules
 
 - Keep route-specific UI and composition here; move reusable components to `components/`.

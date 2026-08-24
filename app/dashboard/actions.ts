@@ -17,7 +17,7 @@ const createLinkSchema = z.object({
     .max(32, "Slug must be at most 32 characters")
     .regex(
       /^[a-zA-Z0-9-_]+$/,
-      "Slug can only contain letters, numbers, hyphens, and underscores"
+      "Slug can only contain letters, numbers, hyphens, and underscores",
     )
     .optional()
     .or(z.literal("")),
@@ -33,7 +33,7 @@ function generateSlug() {
 }
 
 export async function createLinkAction(
-  input: CreateLinkInput
+  input: CreateLinkInput,
 ): Promise<{ error: string } | { success: true }> {
   const { userId } = await auth();
   if (!userId) {
@@ -67,7 +67,7 @@ const updateLinkSchema = z.object({
     .max(32, "Slug must be at most 32 characters")
     .regex(
       /^[a-zA-Z0-9-_]+$/,
-      "Slug can only contain letters, numbers, hyphens, and underscores"
+      "Slug can only contain letters, numbers, hyphens, and underscores",
     ),
 });
 
@@ -78,7 +78,7 @@ type UpdateLinkInput = {
 };
 
 export async function updateLinkAction(
-  input: UpdateLinkInput
+  input: UpdateLinkInput,
 ): Promise<{ error: string } | { success: true }> {
   const { userId } = await auth();
   if (!userId) {
@@ -117,7 +117,7 @@ type DeleteLinkInput = {
 };
 
 export async function deleteLinkAction(
-  input: DeleteLinkInput
+  input: DeleteLinkInput,
 ): Promise<{ error: string } | { success: true }> {
   const { userId } = await auth();
   if (!userId) {

@@ -2,7 +2,7 @@ import { SignInButton, SignUpButton } from "@clerk/nextjs";
 import { auth } from "@clerk/nextjs/server";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import { redirect } from "next/navigation";
-import { LinkIcon, BarChart2Icon, ShieldCheckIcon, ZapIcon } from "lucide-react";
+import { LinkIcon, ShieldCheckIcon, ZapIcon } from "lucide-react";
 
 import { Header } from "@/components/header";
 import { Button } from "@/components/ui/button";
@@ -13,12 +13,6 @@ const features = [
     title: "Shorten Any URL",
     description:
       "Turn long, unwieldy links into clean, memorable short URLs in seconds.",
-  },
-  {
-    icon: BarChart2Icon,
-    title: "Track Click Analytics",
-    description:
-      "See how many times your links are clicked and understand your audience.",
   },
   {
     icon: ZapIcon,
@@ -37,7 +31,7 @@ const features = [
 const steps = [
   "Paste the long URL you want to shorten",
   "Customize your short link (optional)",
-  "Share it anywhere and track every click",
+  "Share it anywhere",
 ];
 
 export default async function Home() {
@@ -54,9 +48,10 @@ export default async function Home() {
         <section className="mx-auto flex w-full max-w-6xl flex-col gap-16 px-6 py-16 sm:px-10 lg:px-12 lg:py-24">
           <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
             <div className="space-y-8">
-               <div className="space-y-5">
+              <div className="space-y-5">
                 <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-                  A simple link shortener for links people actually want to click.
+                  A simple link shortener for links people actually want to
+                  click.
                 </h1>
                 <p className="max-w-2xl text-lg leading-8 text-muted-foreground sm:text-xl">
                   Create short, polished URLs, keep them organized in one
@@ -90,7 +85,9 @@ export default async function Home() {
                   <p className="mt-2 text-2xl font-semibold">Clean branding</p>
                 </div>
                 <div className="rounded-2xl border border-border bg-card p-4">
-                  <p className="text-sm text-muted-foreground">Protected with</p>
+                  <p className="text-sm text-muted-foreground">
+                    Protected with
+                  </p>
                   <p className="mt-2 text-2xl font-semibold">Secure access</p>
                 </div>
               </div>

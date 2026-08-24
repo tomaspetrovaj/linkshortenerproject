@@ -28,7 +28,7 @@ export async function createLink(data: {
 export async function updateLink(
   id: number,
   userId: string,
-  data: { slug: string; url: string }
+  data: { slug: string; url: string },
 ) {
   const [link] = await db
     .update(links)
@@ -45,4 +45,3 @@ export async function deleteLink(id: number, userId: string) {
     .returning();
   return link;
 }
-

@@ -63,8 +63,8 @@ export function DeleteLinkDialog({ linkId, slug }: DeleteLinkDialogProps) {
         <AlertDialogHeader>
           <AlertDialogTitle>Delete /{slug}?</AlertDialogTitle>
           <AlertDialogDescription>
-            This will permanently delete this short link. This action cannot
-            be undone.
+            This will permanently delete this short link. This action cannot be
+            undone.
           </AlertDialogDescription>
         </AlertDialogHeader>
         {error && <p className="text-sm text-destructive">{error}</p>}
